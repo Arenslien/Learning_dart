@@ -6,6 +6,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Basic 03',
       home: MyHomePage(),
     );
@@ -18,7 +19,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.amber[800],
       appBar: AppBar(
-        title: Text('파이리'),
+        title: Text('CHARMANDER'),
         centerTitle: true,
         backgroundColor: Colors.amber[700],
         elevation: 0.0,
@@ -51,7 +52,7 @@ class MyHomePage extends StatelessWidget {
             SizedBox(
               height: 10.0
             ),
-            Text('파이리',
+            Text('CHARMANDER',
               style: TextStyle(
                 color: Colors.white,
                 letterSpacing: 2.0,
@@ -62,7 +63,7 @@ class MyHomePage extends StatelessWidget {
             SizedBox(
               height: 30.0
             ),
-            Text('BBANTO POWER LEVEL',
+            Text('CHARMANDER POWER LEVEL',
               style: TextStyle(
                 color: Colors.white,
                 letterSpacing: 2.0,
