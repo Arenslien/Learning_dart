@@ -22,7 +22,6 @@ class MyHome extends StatelessWidget {
   // }
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -34,7 +33,7 @@ class MyHome extends StatelessWidget {
                 height: 150.0,
                 color: Colors.indigo[600],
                 child: Builder(
-                  builder: (BuildContext context) {
+                  builder: (BuildContext ctx) {
                     return FlatButton(
                         child: Text(
                           'First SnackBar',
@@ -42,14 +41,18 @@ class MyHome extends StatelessWidget {
                         ),
                         textColor: Colors.white,
                         onPressed: () {
-                          Scaffold.of(context).showSnackBar(SnackBar(
+                          Scaffold.of(ctx).showSnackBar(SnackBar(
                             content: Text('First SnackBar'),
                             backgroundColor: Colors.indigo[600],
                             duration: Duration(
                               milliseconds: 800,
                             ),
                           ));
-                          // baseColor = Colors.indigo[600];
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (BuildContext context) {
+                              return SecondPage();
+                            },
+                          ));
                         });
                   },
                 )),
@@ -76,7 +79,6 @@ class MyHome extends StatelessWidget {
                               milliseconds: 800,
                             ),
                           ));
-                          // setColor(Colors.lightBlue[800]);
                         });
                   },
                 )),
@@ -173,6 +175,66 @@ class ThirdSnackBar extends StatelessWidget {
           duration: Duration(milliseconds: 1000),
         ));
       },
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            CustomBox(Colors.indigo, 'Go', 'Go to the first page'),
+            CustomBox(Colors.lightBlue[800], 'To', 'Go to the first page'),
+            CustomBox(Colors.lightBlue, 'The', 'Go to the first page'),
+            CustomBox(Colors.lightBlue[300], 'First', 'Go to the first page'),
+            CustomBox(Colors.lightBlue[50], 'Page', 'Go to the first page'),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CustomBox extends StatelessWidget {
+  Widget name;
+  String buttonText;
+  String content;
+  Color color;
+  CustomBox(Color color, String buttonText, String content) {
+    this.color = color;
+    this.buttonText = buttonText;
+    this.content = content;
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(
+      ),
+      color: this.color,
+      width: 300.0,
+      height: 150.0,
+      child: FlatButton(
+        child: Text(
+          buttonText,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 28.0,
+          ),
+        ),
+        onPressed: () {
+          Scaffold.of(context).showSnackBar(SnackBar(
+            content: Text(this.content),
+            backgroundColor: this.color,
+            duration: Duration(
+              milliseconds: 800,
+            ),
+          ));
+          Navigator.pop(context);
+        },
+      ),
     );
   }
 }
