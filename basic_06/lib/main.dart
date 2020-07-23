@@ -41,6 +41,15 @@ class MyHome extends StatelessWidget {
               color: Colors.yellow
             ),
             ColorBox(Colors.green),
+            RaisedButton(
+              child: Text('Nothing',
+                style: TextStyle(),
+              ),
+              onPressed: () {
+              },
+              color: Colors.teal
+              
+            ),
             ColorBox(Colors.blue)
           ],
         ),
@@ -61,7 +70,7 @@ class ColorBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100.0,
+      width: 500,
       height: 100.0,
       decoration: BoxDecoration(
         color: boxColor,
@@ -84,6 +93,12 @@ class SecondPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             ColorBox(Colors.red),
+            RaisedButton(
+              child: Text('Nothing'),
+              onPressed: () {
+              },
+              color: Colors.yellow
+            ),
             ColorBox(Colors.green),
             RaisedButton(
               child: Text('Go to the First page'),
